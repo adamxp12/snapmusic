@@ -27,8 +27,10 @@ app.use('/public', express.static('public'))
 // API routes above here to prevent CSRF validation checks
 app.use(csrf())
 
-app.get('/', function(req, res) {
-    res.send("Hello World");
+app.get('/login', function(req, res) {
+    res.render('login.njk', {
+        csrfToken: req.csrfToken()
+    })
 })
 
 app.listen(3000, function() {
