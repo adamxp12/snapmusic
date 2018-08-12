@@ -1,0 +1,19 @@
+{
+  "name": "snapmusic",
+  "version": "1.0.0",
+  "description": "SnapMusic - Unleash your music library",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamxp12/snapmusic.git"
+  },
+  "author": "Adam Blunt (adamblunt.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adamxp12/snapmusic/issues"
+  },
+  "homepage": "https://github.com/adamxp12/snapmusic#readme"
+}
