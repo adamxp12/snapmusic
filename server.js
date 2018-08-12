@@ -9,6 +9,13 @@ var express = require('express'),
     mongoose = require('mongoose'),
     func = require('./func');
 
+mongoose.connect(config.dbconnect, { useNewUrlParser: true});
+
+mongoose.connection.on('error',function (err) {  
+    console.log('Database connection error: ' + err);
+    process.exit();
+}); 
+
 app.use(helmet.dnsPrefetchControl())
 app.use(helmet.frameguard())
 app.use(helmet.ieNoOpen())
@@ -36,6 +43,16 @@ app.get('/test', func.ensureAuthenticated, function(req, res) {
 
 app.use('/login', require('./routes/login'));
 
-app.listen(config.port, function() {
-    console.log("Listening on "+config.port)
-})
+mongoose.connection.on('connected', function () { 
+    if(config.sessionkey=="changeme") {
+        console.log('Server Not Started');
+        console.log('Reason: Session Key default');
+        console.log('See config.js for more info');
+        console.log('');
+        process.exit();
+    } else {
+        app.listen(config.port, function() {
+            console.log("SnapMusic listening on *:"+config.port);
+        });
+    }
+});

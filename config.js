@@ -4,7 +4,7 @@ var config = {};
 // User config starts here
 
 // Database
-config.dbconnect = 'mongodb://127.0.0.1/snapmusic';
+config.dbconnect = 'mongodb://127.0.0.1:27017/snapmusic';
 
 // Session
 config.sessionkey = 'changemes';
