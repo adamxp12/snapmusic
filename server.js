@@ -5,6 +5,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     helmet = require('helmet'),
     nunjucks = require('nunjucks'),
+    config = require('./config'),
     mongoose = require('mongoose'),
     func = require('./func');
 
@@ -14,7 +15,7 @@ app.use(helmet.ieNoOpen())
 app.use(helmet.noSniff())
 app.use(helmet.xssFilter())
 app.use(session({
-    secret: 'keyboard cat',
+    secret: config.sessionkey,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: true }
@@ -35,6 +36,6 @@ app.get('/test', func.ensureAuthenticated, function(req, res) {
 
 app.use('/login', require('./routes/login'));
 
-app.listen(3000, function() {
-    console.log("Done")
+app.listen(config.port, function() {
+    console.log("Listening on "+config.port)
 })
