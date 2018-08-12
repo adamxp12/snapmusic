@@ -11,9 +11,17 @@
     "url": "git+https://github.com/adamxp12/snapmusic.git"
   },
   "author": "Adam Blunt (adamblunt.me)",
-  "license": "GNU GPLv3",
+  "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/adamxp12/snapmusic/issues"
   },
-  "homepage": "https://github.com/adamxp12/snapmusic#readme"
+  "homepage": "https://github.com/adamxp12/snapmusic#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "csurf": "^1.9.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "helmet": "^3.13.0",
+    "nunjucks": "^3.1.3"
+  }
 }
