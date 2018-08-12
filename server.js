@@ -4,7 +4,9 @@ var express = require('express'),
     csrf = require('csurf'),
     bodyParser = require('body-parser'),
     helmet = require('helmet'),
-    nunjucks = require('nunjucks');
+    nunjucks = require('nunjucks'),
+    mongoose = require('mongoose'),
+    func = require('./func');
 
 app.use(helmet.dnsPrefetchControl())
 app.use(helmet.frameguard())
@@ -27,11 +29,11 @@ app.use('/public', express.static('public'))
 // API routes above here to prevent CSRF validation checks
 app.use(csrf())
 
-app.get('/login', function(req, res) {
-    res.render('login.njk', {
-        csrfToken: req.csrfToken()
-    })
+app.get('/test', func.ensureAuthenticated, function(req, res) {
+    res.send("logged in");
 })
+
+app.use('/login', require('./routes/login'));
 
 app.listen(3000, function() {
     console.log("Done")
