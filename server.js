@@ -7,10 +7,11 @@ var express = require('express'),
     nunjucks = require('nunjucks'),
     config = require('./config'),
     mongoose = require('mongoose'),
-    func = require('./func');
+    db = require('./func/db')
+    func = require('./func/func');
 
 mongoose.connect(config.dbconnect, { useNewUrlParser: true});
-
+var snapUser = mongoose.model('snapUser', db.user);
 mongoose.connection.on('error',function (err) {  
     console.log('Database connection error: ' + err);
     process.exit();
@@ -52,6 +53,13 @@ mongoose.connection.on('connected', function () {
         process.exit();
     } else {
         app.listen(config.port, function() {
+            func.isNewInstall(function(c) {
+                if(c) {
+                    console.log("Is new install");
+                } else {
+                    console.log("Is not new install");
+                }
+            })
             console.log("SnapMusic listening on *:"+config.port);
         });
     }

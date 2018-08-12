@@ -1,6 +1,6 @@
 var express = require('express'),
     router = express.Router(),
-    func = require('../func');
+    func = require('../func/func');
 
 router.get('/', func.ensureUnAuthenticated, function(req, res) {
     res.render('login.njk', {

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/adamxp12/snapmusic#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "csurf": "^1.9.0",
     "express": "^4.16.3",
